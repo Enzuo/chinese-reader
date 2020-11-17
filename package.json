@@ -1,5 +1,6 @@
 {
   "name": "chinese-reader",
+  "description": "Help read chinese with the right tones",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
