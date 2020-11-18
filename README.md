@@ -8,7 +8,15 @@ Also evaluate the difficulty of text and sentence according to HSK levels so you
 
 ## Install
 
-```
+```bash
 npm install
+npm run dict # create parsing dictionary from CC-CEDICT
 npm start
 ```
+
+
+
+## Thanks
+
+https://github.com/nikslab/parse-chinese-text
+https://www.mdbg.net/chinese/dictionary?page=cedict
