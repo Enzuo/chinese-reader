@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import text from './data/text1';
+
+console.log(text)
 
 function App() {
   return (
