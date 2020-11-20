@@ -1,15 +1,15 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import dict from '!!raw-loader!../dictionary/mandarin_words_v1.txt'
+import dict from '../dictionary/mandarin_words_v1.txt'
 
 const dict_arr = dict.split("\n")
 
-function textParse (text) {
+export function parseText (text) {
   for(var i=0; i< text.length; i++){
-    sentenceParse(text[i])
+    parseSentence(text[i])
   }
 }
 
-function sentenceParse (sentence) {
+export function parseSentence (sentence) {
   var parsedSentence = []
   var maxChunkSize = 5
   var chunkSize
@@ -34,4 +34,4 @@ function sentenceParse (sentence) {
   console.log(parsedSentence)
 }
 
-export { textParse, sentenceParse }
+export default { parseText, parseSentence }

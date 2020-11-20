@@ -1,8 +1,8 @@
-import {textParse} from '../utils/parser'
+import {parseText} from '../utils/parser'
 
 
 function Reader (props) {
-  textParse(props.text)
+  parseText(props.text)
 
 
   return (
