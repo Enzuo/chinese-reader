@@ -1,15 +1,30 @@
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import dict from '../dictionary/mandarin_words_v1.txt'
+import dict_url from '../dictionary/mandarin_words_v1.txt'
 
-const dict_arr = dict.split("\n")
 
-export function parseText (text) {
-  for(var i=0; i< text.length; i++){
-    parseSentence(text[i])
+var dict_arr;
+async function getDictionary () {
+  if(!dict_arr){
+    var dict_res = await fetch(dict_url)
+    var dict = await dict_res.text()
+    console.log(dict_res, dict)
+    dict_arr = dict.split("\n")
   }
+  return dict_arr
 }
 
-export function parseSentence (sentence) {
+
+export async function parseText (text) {
+  const parsedText = []
+  for(var i=0; i< text.length; i++){
+    var parsedSentence = await parseSentence(text[i])
+    parsedText.push(parsedSentence)
+  }
+  return parsedText;
+}
+
+export async function parseSentence (sentence) {
+  var dict = await getDictionary();
   var parsedSentence = []
   var maxChunkSize = 5
   var chunkSize
@@ -20,7 +35,7 @@ export function parseSentence (sentence) {
     while(!isFound && chunkSize > 1){
       chunk = sentence.substr(i, chunkSize)
       console.log('lookingFor chunk in dictionary', chunk, chunkSize)
-      var index = dict_arr.findIndex(entry => entry === chunk)
+      var index = dict.findIndex(entry => entry === chunk)
       if(index >= 0){
         isFound = true
       }
