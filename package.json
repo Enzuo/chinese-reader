@@ -15,7 +15,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dict": "cat ./dictionary/cedict.u8 | cut -d \" \" -f1 > ./dictionary/mandarin_words.txt",
+    "dict": "cat ./src/dictionary/cedict.u8 | cut -d \" \" -f1 > ./src/dictionary/mandarin_words.txt",
+    "dict-json": "sed -e 's/^/\"/' -e 's/$/\",/' -e '1s/^/[/' -e '$s/,$/]/' ./src/dictionary/mandarin_words.txt > ./src/dictionary/mandarin_words.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
