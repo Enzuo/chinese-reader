@@ -1,10 +1,11 @@
 import parser from './parser'
 
-test('parse text', async () => {
+test('exytact sentences', () => {
   var text = `
   你有想要购买镜头的冲动与欲望, 却又因为经济拮据
   而迟迟无法下手吗。
   `
-  var parsedText = await parser.parseText(text)
-  expect(parsedText).toBe('hello')
+  var parsedText = parser.splitSentences(text)
+  console.log(parsedText);
+  // expect(text).toBe('hello')
 });
